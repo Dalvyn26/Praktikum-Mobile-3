@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">TP1</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="pronouns">Pronouns</string>
+    <string name="bio">Bio</string>
+    <string name="posts_count">67</string>
+    <string name="posts_label">posts</string>
+    <string name="followers_count">1M</string>
+    <string name="followers_label">followers</string>
+    <string name="following_count">1</string>
+    <string name="following_label">following</string>
+    <string name="dashboard_title">Your dashboard</string>
+    <string name="dashboard_views">0 views in the last 30 days.</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="share_profile">Share profile</string>
+    <string name="new_highlight">New</string>
+    <string name="desc_add_post">Add post</string>
+    <string name="desc_menu">Menu</string>
+    <string name="desc_profile_image">Profile image</string>
+    <string name="desc_add_highlight">Add highlight</string>
+    <string name="desc_view_grid">View grid</string>
+    <string name="desc_reels">Reels</string>
+    <string name="desc_tags">Tags</string>
+    <string name="desc_camera">Camera</string>
+    <string name="desc_home">Home</string>
+    <string name="desc_search">Search</string>
+    <string name="desc_send">Send</string>
+    <string name="desc_explore">Explore</string>
+    <string name="edit_profile_title">Edit profile</string>
+    <string name="edit_picture">Edit picture</string>
+    <string name="btn_save">Save</string>
+</resources>
