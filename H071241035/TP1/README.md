@@ -5,6 +5,8 @@ Proyek ini adalah implementasi Tugas Praktikum 1 yang mencakup pembuatan aplikas
 
 ## Video Penjelasan
 Berikut adalah link video penjelasan untuk praktikum ini:
+
+
 [![Video Penjelasan](https://img.youtube.com/vi/xiBDDe2fw1E/0.jpg)](https://youtu.be/xiBDDe2fw1E)
 
 [Klik di sini untuk menonton video](https://youtu.be/xiBDDe2fw1E)
