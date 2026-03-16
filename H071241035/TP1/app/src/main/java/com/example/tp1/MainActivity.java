@@ -1,8 +1,6 @@
 package com.example.tp1;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -23,12 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private Button btnEditProfile;
     private ImageView ivProfileImage;
     private Uri currentProfileUri;
-    private SharedPreferences sharedPreferences;
+    private boolean isFirstTime = true;
 
     private final ActivityResultLauncher<Intent> editProfileLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    isFirstTime = false;
                     Intent data = result.getData();
                     String name = data.getStringExtra("name");
                     String username = data.getStringExtra("username");
@@ -41,23 +40,15 @@ public class MainActivity extends AppCompatActivity {
                     tvPronouns.setText(pronouns);
                     tvBio.setText(bio);
 
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("name", name);
-                    editor.putString("username", username);
-                    editor.putString("pronouns", pronouns);
-                    editor.putString("bio", bio);
-
                     if (uriString != null) {
                         currentProfileUri = Uri.parse(uriString);
                         ivProfileImage.setImageURI(currentProfileUri);
-                        editor.putString("imageUri", uriString);
                         try {
                             getContentResolver().takePersistableUriPermission(currentProfileUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         } catch (SecurityException e) {
 
                         }
                     }
-                    editor.apply();
                 }
             }
     );
@@ -80,32 +71,19 @@ public class MainActivity extends AppCompatActivity {
         btnEditProfile = findViewById(R.id.btn_edit_profile);
         ivProfileImage = findViewById(R.id.iv_profile_image);
 
-        sharedPreferences = getSharedPreferences("ProfilePrefs", Context.MODE_PRIVATE);
-        loadProfileData();
-
         btnEditProfile.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, activity_edit_profile.class);
-            intent.putExtra("name", tvName.getText().toString());
-            intent.putExtra("username", tvUsernameTop.getText().toString());
-            intent.putExtra("pronouns", tvPronouns.getText().toString());
-            intent.putExtra("bio", tvBio.getText().toString());
-            if (currentProfileUri != null) {
-                intent.putExtra("imageUri", currentProfileUri.toString());
+            if (!isFirstTime) {
+                intent.putExtra("name", tvName.getText().toString());
+                intent.putExtra("username", tvUsernameTop.getText().toString());
+                intent.putExtra("pronouns", tvPronouns.getText().toString());
+                intent.putExtra("bio", tvBio.getText().toString());
+                if (currentProfileUri != null) {
+                    intent.putExtra("imageUri", currentProfileUri.toString());
+                }
             }
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             editProfileLauncher.launch(intent);
         });
-    }
-
-    private void loadProfileData() {
-        tvName.setText(sharedPreferences.getString("name", "Name"));
-        tvUsernameTop.setText(sharedPreferences.getString("username", "Username"));
-        tvPronouns.setText(sharedPreferences.getString("pronouns", "Pronouns"));
-        tvBio.setText(sharedPreferences.getString("bio", "Bio"));
-        String uriString = sharedPreferences.getString("imageUri", null);
-        if (uriString != null) {
-            currentProfileUri = Uri.parse(uriString);
-            ivProfileImage.setImageURI(currentProfileUri);
-        }
     }
 }
