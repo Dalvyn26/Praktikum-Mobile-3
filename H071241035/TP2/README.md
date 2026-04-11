@@ -1,4 +1,4 @@
-# Tugas Praktikum 2 _ RecycleView
+# Tugas Praktikum 2 - RecycleView
 
 ## Deskripsi Proyek
 **LabGram** adalah aplikasi Android yang mengimplementasikan fitur-fitur utama platform media sosial Instagram. Proyek ini merupakan pemenuhan **Tugas Praktikum 2 - Mobile Programming**, yang berfokus pada penggunaan `RecyclerView` tingkat lanjut, pengiriman data objek menggunakan `Parcelable`, navigasi antar `Activity`, serta integrasi dengan galeri sistem.
