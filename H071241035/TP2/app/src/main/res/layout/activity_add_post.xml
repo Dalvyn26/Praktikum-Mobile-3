@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_add_post"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:navigationIconTint="@android:color/white"
+            app:title="New Post"
+            app:titleTextColor="@android:color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/fl_choose_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#1AFFFFFF"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#33FFFFFF"
+                app:strokeWidth="1dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                    <ImageView
+                        android:id="@+id/iv_preview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_placeholder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:alpha="0.6"
+                            android:src="@android:drawable/ic_menu_gallery"
+                            app:tint="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_choose_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:alpha="0.6"
+                            android:text="Tap to select a photo"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Write a caption..."
+                app:boxBackgroundColor="#1AFFFFFF"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:hintTextColor="#B3FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:minLines="4"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_upload"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="Share Post"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:backgroundTint="@android:color/white"
+                app:rippleColor="#1A000000"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
