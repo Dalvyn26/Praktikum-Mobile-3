@@ -11,4 +11,4 @@ Berikut adalah video demonstrasi aplikasi:
 [Klik di sini untuk menonton di YouTube](https://youtu.be/yzajvK6hzwk)
 
 ---
-**Tugas Praktikum 3 - Mobile Programming**
+
