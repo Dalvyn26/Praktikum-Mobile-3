@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TP5" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorSecondary">@color/secondary</item>
+        
+        <!-- Background & Surface -->
+        <item name="android:statusBarColor">#1A0F0A</item>
+        <item name="android:windowBackground">#1A0F0A</item>
+        <item name="colorSurface">#2D1B13</item>
+        <item name="colorOnSurface">@color/text_white</item>
+        
+        <!-- Button Tonal Colors (Settings & Logout) -->
+        <item name="colorSecondaryContainer">#4A3429</item>
+        <item name="colorOnSecondaryContainer">@color/accent</item>
+        
+        <!-- Input Form Background -->
+        <item name="colorSurfaceVariant">#3D2B22</item>
+        <item name="colorOnSurfaceVariant">@color/text_white</item>
+    </style>
+</resources>
