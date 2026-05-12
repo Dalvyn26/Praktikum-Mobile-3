@@ -51,9 +51,9 @@ public class DataDummy {
 
         books.add(new Book("Dilan 1990", "Pidi Baiq", 2014, 
             "Romansa masa SMA di Bandung tahun 90-an yang manis, kocak, dan penuh kenangan.", 
-            "https://cdn.gramedia.com/uploads/items/9786027870864_dilan-1990.jpg", false, 4.2f, "Romansa"));
+            "https://upload.wikimedia.org/wikipedia/id/1/19/Dilan_1990_%28poster%29.jpg", false, 4.2f, "Romansa"));
 
-        books.add(new Book("Bodo Amat", "Mark Manson", 2016, 
+        books.add(new Book("Sebuah Seni Untuk Bersikap Bodo Amat", "Mark Manson", 2016, 
             "Pendekatan yang berlawanan dengan intuisi untuk menjalani kehidupan yang lebih baik dengan mengenali batasan diri.", 
             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sebuah-seni-untuk-bersikap-bodoh-amat.jpg/250px-Sebuah-seni-untuk-bersikap-bodoh-amat.jpg", false, 4.3f, "Self-Improvement"));
 

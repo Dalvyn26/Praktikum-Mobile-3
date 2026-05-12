@@ -2,6 +2,8 @@ package com.example.tp3;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +14,14 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.ProgressBar;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
 
@@ -24,7 +29,10 @@ public class HomeFragment extends Fragment {
     private BookAdapter bookAdapter;
     private SearchView searchView;
     private ChipGroup chipGroupGenre;
+    private ProgressBar progressBar;
     private String selectedGenre = "All";
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Nullable
     @Override
@@ -40,6 +48,7 @@ public class HomeFragment extends Fragment {
         rvBooks = view.findViewById(R.id.rvBooks);
         searchView = view.findViewById(R.id.searchView);
         chipGroupGenre = view.findViewById(R.id.chipGroupGenre);
+        progressBar = view.findViewById(R.id.progressBar);
 
         rvBooks.setLayoutManager(new LinearLayoutManager(getContext()));
         bookAdapter = new BookAdapter(getContext(), new ArrayList<>());
@@ -95,17 +104,34 @@ public class HomeFragment extends Fragment {
     }
 
     private void filterData(String query, String genre) {
-        ArrayList<Book> allBooks = DataDummy.getAllBooks();
-        ArrayList<Book> filtered = new ArrayList<>();
+        progressBar.setVisibility(View.VISIBLE);
+        rvBooks.setVisibility(View.GONE);
 
-        for (Book book : allBooks) {
-            boolean matchesSearch = TextUtils.isEmpty(query) || book.getTitle().toLowerCase().contains(query.toLowerCase());
-            boolean matchesGenre = genre.equals("All") || book.getGenre().equals(genre);
-
-            if (matchesSearch && matchesGenre) {
-                filtered.add(book);
+        executor.execute(() -> {
+            try {
+                // Simulate processing time
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        }
-        bookAdapter.updateData(filtered);
+
+            ArrayList<Book> allBooks = DataDummy.getAllBooks();
+            ArrayList<Book> filtered = new ArrayList<>();
+
+            for (Book book : allBooks) {
+                boolean matchesSearch = TextUtils.isEmpty(query) || book.getTitle().toLowerCase().contains(query.toLowerCase());
+                boolean matchesGenre = genre.equals("All") || book.getGenre().equals(genre);
+
+                if (matchesSearch && matchesGenre) {
+                    filtered.add(book);
+                }
+            }
+
+            handler.post(() -> {
+                bookAdapter.updateData(filtered);
+                progressBar.setVisibility(View.GONE);
+                rvBooks.setVisibility(View.VISIBLE);
+            });
+        });
     }
 }
